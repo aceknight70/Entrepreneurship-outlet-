@@ -1,0 +1,8 @@
+{
+  "name": "The Entrepreneurship Outlet",
+  "description": "A screen-by-screen walkthrough for Graphitti Studios delivering into Jasmine School.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
