@@ -3,9 +3,11 @@ import { DiagonalBanner } from '../components/Layout';
 import { CheckCircle2 } from 'lucide-react';
 
 export function EnrolmentScreen() {
-  const [signed, setSigned] = useState({ parent: false, student: false, teacher: false });
+  const [signed, setSigned] = useState({ parent: false, student: false, teacher: false, management: false });
+  const allSigned = signed.parent && signed.student && signed.teacher && signed.management;
 
-  const allSigned = signed.parent && signed.student && signed.teacher;
+  // Hardcoded for prototype demonstration
+  const baseCode = "JS-CHI-014";
 
   return (
     <div className="min-h-screen bg-gray-50 relative pb-24">
@@ -34,23 +36,32 @@ export function EnrolmentScreen() {
 
             {/* Signatures */}
             <div className="bg-gray-50 rounded-lg p-6 space-y-6 border border-gray-100">
-              <h3 className="font-semibold text-gray-800 text-sm uppercase tracking-wider mb-4">Required Signatures</h3>
+              <h3 className="font-semibold text-gray-800 text-sm uppercase tracking-wider mb-2">Required Signatures</h3>
               
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <SignatureRow 
                   label="Parent / Guardian" 
+                  expectedCode={`P-${baseCode}`}
                   isSigned={signed.parent} 
                   onSign={() => setSigned(s => ({ ...s, parent: true }))} 
                 />
                 <SignatureRow 
                   label="Student Maker" 
+                  expectedCode={`S-${baseCode}`}
                   isSigned={signed.student} 
                   onSign={() => setSigned(s => ({ ...s, student: true }))} 
                 />
                 <SignatureRow 
                   label="Supervising Teacher" 
+                  expectedCode={`T-${baseCode}`}
                   isSigned={signed.teacher} 
                   onSign={() => setSigned(s => ({ ...s, teacher: true }))} 
+                />
+                <SignatureRow 
+                  label="School Management" 
+                  expectedCode={`M-${baseCode}`}
+                  isSigned={signed.management} 
+                  onSign={() => setSigned(s => ({ ...s, management: true }))} 
                 />
               </div>
             </div>
@@ -74,7 +85,7 @@ export function EnrolmentScreen() {
                 <div className="w-20 h-20 border-2 border-dashed border-gray-300 rounded-full mb-4 flex items-center justify-center">
                   <span className="text-gray-300 text-2xl">?</span>
                 </div>
-                <p className="text-sm">Complete all signatures to reveal your identity badge.</p>
+                <p className="text-sm">Complete all 4 signatures to reveal your identity badge.</p>
               </div>
             )}
           </div>
@@ -84,21 +95,40 @@ export function EnrolmentScreen() {
   );
 }
 
-function SignatureRow({ label, isSigned, onSign }: { label: string, isSigned: boolean, onSign: () => void }) {
+function SignatureRow({ label, expectedCode, isSigned, onSign }: { label: string, expectedCode: string, isSigned: boolean, onSign: () => void }) {
+  const [inputValue, setInputValue] = useState('');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value.toUpperCase();
+    setInputValue(val);
+    if (val === expectedCode.toUpperCase()) {
+      onSign();
+    }
+  };
+
   return (
-    <div className="flex items-center justify-between">
-      <span className="text-sm font-medium text-gray-700 w-1/3">{label}</span>
+    <div className="flex flex-col gap-1.5">
+      <div className="flex items-center justify-between">
+        <span className="text-sm font-bold text-gray-800">{label}</span>
+        {!isSigned && (
+          <span className="text-xs text-gray-500">
+            Please type: <span className="font-mono font-bold text-[#0B1F3A]">{expectedCode}</span>
+          </span>
+        )}
+      </div>
+      
       {isSigned ? (
-        <div className="flex-1 border-b-2 border-[#0B1F3A] mx-4 relative h-8 flex items-end pb-1 justify-center">
-          <span className="font-script text-[#0B1F3A] text-xl transform -rotate-3">Signed</span>
+        <div className="border-b-2 border-[#0B1F3A] h-10 flex items-end pb-1 justify-center relative">
+          <span className="font-script text-[#0B1F3A] text-2xl transform -rotate-3 absolute bottom-1">Signed</span>
         </div>
       ) : (
-        <button 
-          onClick={onSign}
-          className="flex-1 border-b-2 border-dashed border-gray-300 mx-4 h-8 flex items-end pb-1 justify-center text-xs text-gray-400 hover:border-[#F5A623] hover:text-[#F5A623] transition-colors"
-        >
-          Tap to initial
-        </button>
+        <input
+          type="text"
+          value={inputValue}
+          onChange={handleChange}
+          placeholder="Enter signature code..."
+          className="w-full border-b-2 border-dashed border-gray-300 bg-white px-3 py-2 text-center font-mono text-sm uppercase focus:outline-none focus:border-[#0B1F3A] focus:bg-blue-50/30 transition-all rounded-md shadow-sm"
+        />
       )}
     </div>
   );

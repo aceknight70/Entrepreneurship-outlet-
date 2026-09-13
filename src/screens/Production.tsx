@@ -1,32 +1,15 @@
 import React, { useState } from 'react';
-import { Package, Lock, CheckCircle2 } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 import { DiagonalBanner } from '../components/Layout';
+import { PlaceholderImage } from '../components/PlaceholderImage';
 
 export function ProductionScreen({ onNextPhase }: { onNextPhase?: () => void }) {
   const [activeWeek, setActiveWeek] = useState<number>(6);
   const [activeTab, setActiveTab] = useState<'learn' | 'do' | 'check' | 'sign'>('learn');
-  const [completedWeeks, setCompletedWeeks] = useState<number[]>([5]); // W5 completed from previous phase
-  const [signedWeeks, setSignedWeeks] = useState<Record<number, boolean>>({});
-
-  const completeWeek = (w: number) => {
-    if (!completedWeeks.includes(w)) {
-      setCompletedWeeks([...completedWeeks, w]);
-    }
-    if (w < 7) {
-      setActiveWeek(w + 1);
-      setActiveTab('learn');
-    } else {
-      if (onNextPhase) onNextPhase();
-    }
-  };
-
-  const handleSign = () => {
-    setSignedWeeks({ ...signedWeeks, [activeWeek]: true });
-  };
 
   const weeks = [
-    { id: 6, title: 'W6: Production', fullTitle: 'Production Day' },
-    { id: 7, title: 'W7: QC', fullTitle: 'Quality Control' },
+    { id: 6, title: 'W6: Production', fullTitle: 'Production Day — Zero-Waste' },
+    { id: 7, title: 'W7: QC', fullTitle: 'Finishing, Quality Control & Residue' },
   ];
 
   return (
@@ -35,36 +18,24 @@ export function ProductionScreen({ onNextPhase }: { onNextPhase?: () => void }) 
       <div className="relative z-10 max-w-3xl mx-auto w-full pt-16 px-4 flex-1">
         <div className="mb-6">
           <h1 className="text-4xl font-black text-white tracking-tight mb-2 uppercase">Phase 3</h1>
-          <p className="text-blue-100 font-medium">Production</p>
+          <p className="text-blue-100 font-medium">Production — My Resin Bead Business</p>
         </div>
 
-        {/* Top Horizontal Week Toggles */}
+        {/* UNLOCKED: Top Horizontal Week Toggles */}
         <div className="flex bg-white/20 p-1 rounded-xl mb-6 overflow-x-auto hide-scrollbar">
           {weeks.map((w) => {
-            const isUnlocked = completedWeeks.includes(w.id - 1);
-            const isCompleted = completedWeeks.includes(w.id);
             const isActive = activeWeek === w.id;
-
             return (
               <button
                 key={w.id}
-                onClick={() => isUnlocked && setActiveWeek(w.id)}
+                onClick={() => { setActiveWeek(w.id); setActiveTab('learn'); }}
                 className={`flex-1 min-w-[120px] py-3 px-2 text-sm font-bold rounded-lg transition-all flex flex-col items-center justify-center gap-1 ${
                   isActive
                     ? 'bg-white text-[#0B1F3A] shadow-md scale-100'
-                    : isUnlocked
-                    ? 'bg-transparent text-white hover:bg-white/10'
-                    : 'bg-transparent text-white/50 cursor-not-allowed'
+                    : 'bg-transparent text-white hover:bg-white/10'
                 }`}
               >
-                <div className="flex items-center gap-1">
-                  {isCompleted ? (
-                    <CheckCircle2 className={`w-4 h-4 ${isActive ? 'text-green-500' : 'text-green-300'}`} />
-                  ) : !isUnlocked ? (
-                    <Lock className="w-4 h-4" />
-                  ) : null}
-                  <span>{w.title}</span>
-                </div>
+                <span>{w.title}</span>
               </button>
             );
           })}
@@ -102,8 +73,32 @@ export function ProductionScreen({ onNextPhase }: { onNextPhase?: () => void }) 
               {/* WEEK 6 CONTENT */}
               {activeWeek === 6 && activeTab === 'learn' && (
                 <div className="space-y-6">
-                  <h3 className="text-lg font-black text-gray-900 mb-2">Production Day - Zero-Waste</h3>
-                  <p className="text-gray-600 mb-4">The actual pouring! Focus is on zero waste (SDG 12).</p>
+                  <div className="bg-gray-50 p-6 rounded-xl border border-gray-100 text-gray-700 font-medium space-y-4">
+                    <p className="font-bold text-gray-900 text-lg">This is it — real materials, real pieces. No more practice viewing Runs </p>
+
+                    <div>
+                      <h4 className="font-bold text-blue-900 mb-2">The Syringe Method: why exact measurement matters</h4>
+                      <p>Before you mix, you'll measure your resin using a syringe rather than just pouring by eye. Here's why this matters, beyond just neatness: if you don't know exactly how much resin went into your piece, you can never really know what it cost you to make. A syringe gives you an exact number — say, 2ml of resin for one bead — and that exact number is what makes it possible to work out your true cost per piece later, instead of guessing.</p>
+                      <br/>
+                      <p> Follow your instructor's guide on the exact measurement for your piece.</p>
+                    </div>
+
+                    <div>
+                      <h4 className="font-bold text-blue-900 mb-2">Mixing and pouring — put the practice to work</h4>
+                      <p>Everything you practiced in Week 4 matters now: stir slowly in one direction, let the resin sit briefly so trapped air can rise out, then pour close to the mould rather than from above. This time, it isn't practice — this is the piece.</p>
+                    </div>
+
+                    <div>
+                      <h4 className="font-bold text-blue-900 mb-2">Curing</h4>
+                      <p>Once poured, your piece needs time to cure — the liquid resin undergoes a chemical change that turns it solid. During this time, it must stay completely still and undisturbed. Moving or tilting it while it's curing can ruin the shape. Follow your instructor's guide on how long curing takes.</p>
+                    </div>
+
+                    <div>
+                      <h4 className="font-bold text-blue-900 mb-2">Zero-waste in practice</h4>
+                      <p>Pour exactly what your measurement calls for — not more "just in case." Every bit of resin poured beyond what your piece needs is resin wasted, which is exactly the SDG 12 lesson from Week 2 wants  you to understand, now happening for real.</p>
+                    </div>
+                  </div>
+
                   <button onClick={() => setActiveTab('do')} className="w-full bg-[#0B1F3A] text-white py-4 rounded-xl font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-[#15325A]">
                     Continue to Homework ➔
                   </button>
@@ -115,7 +110,10 @@ export function ProductionScreen({ onNextPhase }: { onNextPhase?: () => void }) 
                   <h3 className="text-xl font-black text-gray-900 mb-4">📝 YOUR HOMEWORK ASSIGNMENT</h3>
                   <div className="bg-gray-50 p-6 rounded-xl border border-gray-100">
                     <ul className="space-y-4 text-gray-700 font-medium">
-                      <li className="flex gap-3"><span className="text-blue-500 font-black">1.</span> Fill out your Production Log (materials used, any spills).</li>
+                      <li className="flex gap-3"><span className="text-blue-500 font-black">1.</span> Fill out your Production Log: materials used, the exact amount measured, cost, and ap photo of your poured piece.</li>
+                      <li className="flex gap-3"><span className="text-blue-500 font-black">2.</span> Bubble Control check: confirm you stirred slowly and deliberately.</li>
+                      <li className="flex gap-3"><span className="text-blue-500 font-black">3.</span> Precision Pouring check: confirm every drop entered the mould with zero spillage.</li>
+                      <li className="flex gap-3"><span className="text-blue-500 font-black">4.</span> <div>Efficiency Reflection: did you have any spills or bubbles? If yes,p what will you do differently next time?<br/>P</div></li>
                     </ul>
                   </div>
                   <button onClick={() => setActiveTab('check')} className="w-full bg-[#0B1F3A] text-white py-4 rounded-xl font-bold uppercase tracking-wider hover:bg-[#15325A]">
@@ -124,11 +122,69 @@ export function ProductionScreen({ onNextPhase }: { onNextPhase?: () => void }) 
                 </div>
               )}
 
+              {activeWeek === 6 && activeTab === 'check' && (
+                <div className="space-y-6">
+                  <h3 className="text-xl font-black text-gray-900 mb-4">Review Your Work</h3>
+                  <div className="bg-green-50 border border-green-200 p-6 rounded-xl">
+                    <p className="text-green-800 font-medium">Before continuing: can you explain, in your own words, why measuring your resin with a syringe — instead of guessing — matters for pricing your piece later?</p>
+                  </div>
+                  <button onClick={() => setActiveTab('sign')} className="w-full bg-[#0B1F3A] text-white py-4 rounded-xl font-bold uppercase tracking-wider hover:bg-[#15325A]">
+                    Proceed to Sign-off ➔
+                  </button>
+                </div>
+              )}
+
+              {activeWeek === 6 && activeTab === 'sign' && (
+                <div className="space-y-6">
+                  <h3 className="text-xl font-black text-gray-900 mb-4">Parent Verification</h3>
+                  <div className="bg-gray-50 p-6 rounded-xl border border-gray-100">
+                    <p className="text-gray-700 font-medium italic">Parent discussion prompt: "Ask your child: did we have any bubbles or spills today? How can we prevent this next time?"</p>
+                  </div>
+                  <button className="w-full py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all bg-green-100 text-green-700 border-2 border-green-500">
+                    <CheckCircle2 className="w-5 h-5" /> Parent Sign-off Complete
+                  </button>
+                  <button onClick={() => { setActiveWeek(7); setActiveTab('learn'); }} className="w-full mt-6 py-4 rounded-xl font-bold uppercase tracking-wider transition-all bg-[#0B1F3A] text-white shadow-lg hover:-translate-y-1">
+                    Proceed to W7
+                  </button>
+                </div>
+              )}
+
               {/* WEEK 7 CONTENT */}
               {activeWeek === 7 && activeTab === 'learn' && (
                 <div className="space-y-6">
-                  <h3 className="text-lg font-black text-gray-900 mb-2">Finishing, QC & Upcycling</h3>
-                  <p className="text-gray-600 mb-4">Demoulding, sanding sharp edges. What do we do with failed pieces? We break them up to use as "terrazzo chips" for the next batch (SDG 12).</p>
+                  <PlaceholderImage src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&w=800" alt="Before and after sanding and polishing" label="Example: Rough Edge vs Sanded & Polished" className="h-48 w-full" />
+                  <div className="bg-gray-50 p-6 rounded-xl border border-gray-100 text-gray-700 font-medium space-y-4">
+                    <p className="font-bold text-gray-900 text-lg">Today your piece comes out of the mould and gets finished.</p>
+
+                    <div>
+                      <h4 className="font-bold text-blue-900 mb-2">Demoulding</h4>
+                      <p>Release your piece the same way you learned in Week 4: flex the silicone mould gently from the outside. Never pry it out with a hard tool — that can tear the mould or damage your piece.</p>
+                    </div>
+
+                    <div>
+                      <h4 className="font-bold text-blue-900 mb-2">Sanding and polishing</h4>
+                      <p>Smooth any rough edges or seam lines left from the mould, working from a rougher grit of sandpaper to a finer one for a clean, polished finish. Follow your instructor's guide on the technique.</p>
+                    </div>
+
+                    <div>
+                      <h4 className="font-bold text-blue-900 mb-2">Checking your work — what to look for</h4>
+                      <p>Not every piece comes out perfect, and knowing how to check your own work is a real skill. Look for:</p>
+                      <ul className="list-disc pl-5 mt-2 space-y-1">
+                        <li>Bubbles trapped inside — small pockets that make the piece look cloudy instead of clear.</li>
+                        <li>Cracks or uneven surfaces.</li>
+                        <li>Soft or sticky spots — press your piece gently. If any part feels soft, bendable, or tacky instead of hard, that means it didn't cure properly.</li>
+                      </ul>
+                      <p className="mt-2">This is different from a bubble — a soft spot can't be fixed, and a piece like this can't be sold. Recognizing this early is part of real quality control, not a failure on your part.</p>
+                    </div>
+
+                    <div>
+                      <h4 className="font-bold text-blue-900 mb-2">Your leftover material — Residue Lesson</h4>
+                      <p>Remember Week 2: cured resin scraps can be crushed into small chips and embedded into a brand new piece as decoration, the same way glitter is added.</p>
+                      <br/>
+                      <p> Today, gather your fully cured offcuts and hand them to the residue activity — someone else's piece may use your leftover material as its decoration.</p>
+                    </div>
+                  </div>
+
                   <button onClick={() => setActiveTab('do')} className="w-full bg-[#0B1F3A] text-white py-4 rounded-xl font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-[#15325A]">
                     Continue to Homework ➔
                   </button>
@@ -140,8 +196,9 @@ export function ProductionScreen({ onNextPhase }: { onNextPhase?: () => void }) 
                   <h3 className="text-xl font-black text-gray-900 mb-4">📝 YOUR HOMEWORK ASSIGNMENT</h3>
                   <div className="bg-gray-50 p-6 rounded-xl border border-gray-100">
                     <ul className="space-y-4 text-gray-700 font-medium">
-                      <li className="flex gap-3"><span className="text-blue-500 font-black">1.</span> Upload photo of finished product.</li>
-                      <li className="flex gap-3"><span className="text-blue-500 font-black">2.</span> Write down one thing you would improve for next time.</li>
+                      <li className="flex gap-3"><span className="text-blue-500 font-black">1.</span> Inspect your finished piece and note anything you'd improve.</li>
+                      <li className="flex gap-3"><span className="text-blue-500 font-black">2.</span> Complete your Quality Control checklist (bubbles, cracks, surface evenness, hardness check).</li>
+                      <li className="flex gap-3"><span className="text-blue-500 font-black">3.</span> (Junior Secondary / residue track): log what you made using someone else's leftover offcuts.</li>
                     </ul>
                   </div>
                   <button onClick={() => setActiveTab('check')} className="w-full bg-[#0B1F3A] text-white py-4 rounded-xl font-bold uppercase tracking-wider hover:bg-[#15325A]">
@@ -150,12 +207,11 @@ export function ProductionScreen({ onNextPhase }: { onNextPhase?: () => void }) 
                 </div>
               )}
 
-              {/* CHECK TAB (Shared) */}
-              {activeTab === 'check' && (
+              {activeWeek === 7 && activeTab === 'check' && (
                 <div className="space-y-6">
                   <h3 className="text-xl font-black text-gray-900 mb-4">Review Your Work</h3>
                   <div className="bg-green-50 border border-green-200 p-6 rounded-xl">
-                    <p className="text-green-800 font-medium">Please review your homework answers before asking for parent sign-off. Everything looks complete!</p>
+                    <p className="text-green-800 font-medium">Before continuing: can you explain the difference between a bubble (cosmetic) and a soft/sticky spot (a real cure failure)? Can you explain why a soft spot means the piece cannot be sold or fixed?</p>
                   </div>
                   <button onClick={() => setActiveTab('sign')} className="w-full bg-[#0B1F3A] text-white py-4 rounded-xl font-bold uppercase tracking-wider hover:bg-[#15325A]">
                     Proceed to Sign-off ➔
@@ -163,36 +219,21 @@ export function ProductionScreen({ onNextPhase }: { onNextPhase?: () => void }) 
                 </div>
               )}
 
-              {/* SIGN TAB (Shared) */}
-              {activeTab === 'sign' && (
+              {activeWeek === 7 && activeTab === 'sign' && (
                 <div className="space-y-6">
                   <h3 className="text-xl font-black text-gray-900 mb-4">Parent Verification</h3>
-                  <p className="text-gray-600 mb-6">Please hand this device to your parent or guardian to verify you have discussed today's lesson.</p>
-                  
-                  <button 
-                    onClick={handleSign}
-                    className={`w-full py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all ${
-                      signedWeeks[activeWeek] ? 'bg-green-100 text-green-700 border-2 border-green-500' : 'bg-gray-100 text-gray-500 hover:bg-gray-200 border-2 border-transparent'
-                    }`}
-                  >
-                    {signedWeeks[activeWeek] ? (
-                      <><CheckCircle2 className="w-5 h-5" /> Parent Sign-off Complete</>
-                    ) : (
-                      <><span className="text-lg">🖊️</span> TAP TO SIGN</>
-                    )}
+                  <div className="bg-gray-50 p-6 rounded-xl border border-gray-100">
+                    <p className="text-gray-700 font-medium italic">Parent discussion prompt: "Ask your child to expplain their finished piece, and  also explain what they checked for and what they found."</p>
+                  </div>
+                  <button className="w-full py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all bg-green-100 text-green-700 border-2 border-green-500">
+                    <CheckCircle2 className="w-5 h-5" /> Parent Sign-off Complete
                   </button>
-
-                  <button 
-                    onClick={() => completeWeek(activeWeek)}
-                    disabled={!signedWeeks[activeWeek]}
-                    className={`w-full mt-6 py-4 rounded-xl font-bold uppercase tracking-wider transition-all ${
-                      signedWeeks[activeWeek] ? 'bg-[#0B1F3A] text-white shadow-lg hover:-translate-y-1' : 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                    }`}
-                  >
-                    {activeWeek === 7 ? 'Unlock Phase 4 (Market)' : `Submit Homework & Unlock W${activeWeek + 1}`}
+                  <button onClick={() => { if(onNextPhase) onNextPhase() }} className="w-full mt-6 py-4 rounded-xl font-bold uppercase tracking-wider transition-all bg-[#0B1F3A] text-white shadow-lg hover:-translate-y-1">
+                    Unlock Phase 4 (Market)
                   </button>
                 </div>
               )}
+
             </div>
           </div>
         </div>

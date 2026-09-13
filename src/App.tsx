@@ -11,6 +11,7 @@ import { MarketScreen } from './screens/Market';
 import { GraduationScreen } from './screens/Graduation';
 import { AdminViewScreen } from './screens/AdminView';
 import { ParentViewScreen } from './screens/ParentView';
+import { GalleryScreen } from './screens/Gallery';
 
 export default function App() {
   const [currentView, setCurrentView] = useState<ViewState>('landing');
@@ -23,7 +24,7 @@ export default function App() {
         return <EnrolmentScreen />;
       case 'dashboard': 
         // We pass the phase index 1-5 to navigate directly, or we can just navigate to Knowledge for now.
-        return <DashboardScreen onEnterPhase={(phase) => {
+        return <DashboardScreen onViewChange={setCurrentView} onEnterPhase={(phase) => {
           if (phase === 1) setCurrentView('knowledge');
           else if (phase === 2) setCurrentView('preparation');
           else if (phase === 3) setCurrentView('production');
@@ -40,6 +41,8 @@ export default function App() {
         return <MarketScreen onNextPhase={() => setCurrentView('graduation')} />;
       case 'graduation': 
         return <GraduationScreen />;
+      case 'gallery':
+        return <GalleryScreen onBack={() => setCurrentView('dashboard')} />;
       case 'admin': 
         return <AdminViewScreen onBack={() => setCurrentView('landing')} />;
       case 'parent': 

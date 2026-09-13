@@ -26,3 +26,24 @@ export function GraphittiBrand({ showBadge = true, className = '', dark = false 
     </div>
   );
 }
+
+export function EsgmcBrand({ className = '' }: { className?: string }) {
+  return (
+    <div className={`flex items-center justify-center ${className}`}>
+      <img 
+        src="/Screenshot_20260913_171321_Gallery.jpg" 
+        alt="ESGMC Logo" 
+        className="w-10 h-10 rounded-full object-contain border border-gray-100 shadow-sm bg-white" 
+        onError={(e) => {
+          // Fallback if image not found in public folder
+          e.currentTarget.style.display = 'none';
+          e.currentTarget.nextElementSibling?.classList.remove('hidden');
+        }}
+      />
+      {/* Fallback SVG if image is missing */}
+      <div className="hidden w-10 h-10 rounded-full border-2 border-[#0B1F3A] flex items-center justify-center bg-white shadow-sm relative overflow-hidden">
+        <span className="font-black text-[#0B1F3A] text-[8px]">ESGMC</span>
+      </div>
+    </div>
+  );
+}

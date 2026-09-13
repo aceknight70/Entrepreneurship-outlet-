@@ -1,5 +1,5 @@
 import React from 'react';
-import { GraphittiBrand } from '../components/Branding';
+import { GraphittiBrand, EsgmcBrand } from '../components/Branding';
 import { DiagonalBanner } from '../components/Layout';
 
 export function LandingScreen({ onEnter }: { onEnter?: () => void }) {
@@ -9,13 +9,14 @@ export function LandingScreen({ onEnter }: { onEnter?: () => void }) {
       
       <div className="relative z-10 max-w-3xl mx-auto pt-16 px-6 flex flex-col items-center text-center">
         {/* Jasmine School - Top Level */}
-        <div className="mb-16">
+<div className="mb-16">
           <h2 className="text-[#F5A623] font-serif italic text-lg mb-2">Welcome to</h2>
-          <h1 className="text-4xl sm:text-6xl font-bold text-white tracking-tight leading-tight" style={{ fontFamily: 'Syne, sans-serif' }}>
-            GRAPHITTI STUDIOS
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight flex flex-col gap-1" style={{ fontFamily: 'Syne, sans-serif' }}>
+            <span className="text-white">GRAPHITTI STUDIOS</span>
+            <span className="text-black">CREATIVE ENTREPRENEURSHIP HUB</span>
           </h1>
-          <p className="text-blue-200 mt-2 font-medium tracking-wide uppercase text-sm max-w-md mx-auto">
-            Entrepreneurship School & Creative Enterprise Hub
+          <p className="text-gray-500 mt-4 font-medium tracking-wide uppercase text-sm max-w-md mx-auto">
+            A Shadow School designed in the ESGMC SDG Learning Lab
           </p>
         </div>
 
@@ -26,11 +27,18 @@ export function LandingScreen({ onEnter }: { onEnter?: () => void }) {
           
           <div className="relative z-10 space-y-10">
             <div>
-              <h3 className="text-gray-500 font-medium text-sm tracking-widest uppercase mb-4">Programme Delivery By</h3>
-              <div className="flex flex-col items-center gap-2">
+              <h3 className="text-gray-500 font-medium text-sm tracking-widest uppercase mb-6">Programme Delivery By</h3>
+              
+              <div className="flex flex-col items-center gap-4">
                 <GraphittiBrand />
-                <span className="text-gray-700 font-bold tracking-wide uppercase text-sm">and ESGMC Joint venture</span>
+                
+                <div className="flex items-center justify-center gap-3">
+                  <span className="text-gray-700 font-bold tracking-wide uppercase text-sm">and</span>
+                  <EsgmcBrand />
+                  <span className="text-gray-700 font-bold tracking-wide uppercase text-sm">ESGMC Joint venture</span>
+                </div>
               </div>
+
               <p className="text-gray-600 max-w-md mx-auto mt-6 leading-relaxed">
                 An 11 -week immersive journey guiding students from raw materials, craft , entrepreneurial Mindset  development  to market reality, teaching sustainable design and real-world economics.
               </p>
