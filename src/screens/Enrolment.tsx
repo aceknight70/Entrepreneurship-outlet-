@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { DiagonalBanner } from '../components/Layout';
 import { CheckCircle2 } from 'lucide-react';
+import { SCHOOL_CONFIG } from '../config';
 
 export function EnrolmentScreen() {
   const [signed, setSigned] = useState({ parent: false, student: false, teacher: false, management: false });
   const allSigned = signed.parent && signed.student && signed.teacher && signed.management;
 
   // Hardcoded for prototype demonstration
-  const baseCode = "JS-CHI-014";
+  const baseCode = `${SCHOOL_CONFIG.initials}-CHI-014`;
 
   return (
     <div className="min-h-screen bg-gray-50 relative pb-24">
@@ -16,7 +17,7 @@ export function EnrolmentScreen() {
       <div className="relative z-10 max-w-4xl mx-auto pt-16 px-4">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-white mb-2">Digital Enrolment</h1>
-          <p className="text-blue-100">Jasmine School Entrepreneurship Outlet</p>
+          <p className="text-blue-100">{SCHOOL_CONFIG.name} Entrepreneurship Outlet</p>
         </div>
 
         <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-8 flex flex-col md:flex-row gap-12">
@@ -76,7 +77,7 @@ export function EnrolmentScreen() {
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">Enrolment Complete</h3>
                 <div className="bg-blue-50 text-[#0B1F3A] px-4 py-2 rounded-full text-sm font-semibold border border-blue-100 mb-4">
-                  Jasmine School SDG Entrepreneur
+                  {SCHOOL_CONFIG.name} SDG Entrepreneur
                 </div>
                 <p className="text-xs text-gray-500 italic">Business name locked until Market Exposure is logged.</p>
               </div>

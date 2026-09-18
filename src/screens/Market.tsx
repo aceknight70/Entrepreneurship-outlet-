@@ -3,6 +3,7 @@ import { CheckCircle2 } from 'lucide-react';
 import { DiagonalBanner } from '../components/Layout';
 import { PlaceholderImage } from '../components/PlaceholderImage';
 import { LogoMaker } from '../components/LogoMaker';
+import { SCHOOL_CONFIG } from '../config';
 
 export function MarketScreen({ onNextPhase }: { onNextPhase?: () => void }) {
   const [activeWeek, setActiveWeek] = useState<number>(8);
@@ -89,12 +90,12 @@ export function MarketScreen({ onNextPhase }: { onNextPhase?: () => void }) {
 
                     <div>
                       <h4 className="font-bold text-blue-900 mb-2">Designing your badge</h4>
-                      <p>Your logo isn't something you draw from scratch — it's your own personal badge, built inside the app using the Logo Maker. Your badge has three parts: your school identity curved around the ring ("Jasmine School Shadow SDG Entrepreneur"), your own name in the centre, and a short one-line mission underneath it, in your own words. Use the Logo Maker to build yours.</p>
+                      <p>Your logo isn't something you draw from scratch — it's your own personal badge, built inside the app using the Logo Maker. Your badge has three parts: your school identity curved around the ring ("{SCHOOL_CONFIG.name} Shadow SDG Entrepreneur"), your own name in the centre, and a short one-line mission underneath it, in your own words. Use the Logo Maker to build yours.</p>
                     </div>
 
                     <div>
                       <h4 className="font-bold text-blue-900 mb-2">Packaging — protecting your work and showing who made it</h4>
-                      <p>Packaging does two jobs: it protects your piece, and it tells the buyer who made it and why. This is where your SDG tag goes — a small label that reads: "This piece came from a Jasmine School Shadow SDG Entrepreneur." A buyer who reads that knows this isn't just a product — it's tied to a real goal, made by someone real, from a real school.</p>
+                      <p>Packaging does two jobs: it protects your piece, and it tells the buyer who made it and why. This is where your SDG tag goes — a small label that reads: "This piece came from a {SCHOOL_CONFIG.name} Shadow SDG Entrepreneur." A buyer who reads that knows this isn't just a product — it's tied to a real goal, made by someone real, from a real school.</p>
                     </div>
 
                     <div>
@@ -118,7 +119,7 @@ export function MarketScreen({ onNextPhase }: { onNextPhase?: () => void }) {
                   <div className="bg-gray-50 p-6 rounded-xl border border-gray-100">
                     <ul className="space-y-4 text-gray-700 font-medium">
                       <li className="flex gap-3"><span className="text-blue-500 font-black">1.</span> Use the Logo Maker to personalize your badge — enter your name (or business name, if unlocked) and write your one-line mission.</li>
-                      <li className="flex gap-3"><span className="text-blue-500 font-black">2.</span> Design your packaging label, including your SDG tag: "This piece came from a Jasmine School Shadow SDG Entrepreneur."</li>
+                      <li className="flex gap-3"><span className="text-blue-500 font-black">2.</span> Design your packaging label, including your SDG tag: "This piece came from a {SCHOOL_CONFIG.name} Shadow SDG Entrepreneur."</li>
                       <li className="flex gap-3"><span className="text-blue-500 font-black">3.</span> Research 3 real resin/bead brands online — how do they present themselves, and what do they charge?</li>
                     </ul>
                   </div>

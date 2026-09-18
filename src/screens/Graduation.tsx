@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Award, CheckCircle2 } from 'lucide-react';
 import { DiagonalBanner } from '../components/Layout';
 import { PlaceholderImage } from '../components/PlaceholderImage';
+import { SCHOOL_CONFIG } from '../config';
 
 export function GraduationScreen() {
   const [activeTab, setActiveTab] = useState<'learn' | 'do' | 'check' | 'sign'>('learn');
@@ -104,7 +105,7 @@ export function GraduationScreen() {
                     <Award className="w-16 h-16 text-yellow-500 mx-auto mb-4" />
                     <h4 className="font-black text-yellow-900 uppercase tracking-wider mb-2">Certificate of Completion</h4>
                     <p className="text-yellow-800 italic font-medium leading-relaxed">
-                      "This certifies that [Student Name] is a Jasmine School Shadow SDG Entrepreneur — Resin Craft, having completed the 11-week journey from raw materials to market reality."
+                      "This certifies that [Student Name] is a {SCHOOL_CONFIG.name} Shadow SDG Entrepreneur — Resin Craft, having completed the 11-week journey from raw materials to market reality."
                     </p>
                     <p className="text-sm text-yellow-700 mt-4 font-bold">
                       Signed by Head of School and Graphitti Programme Director.

@@ -1,6 +1,36 @@
 import React from 'react';
+import { SCHOOL_CONFIG } from '../config';
 import { GraphittiBrand, EsgmcBrand } from '../components/Branding';
 import { DiagonalBanner } from '../components/Layout';
+
+
+const TypewriterText = ({ text, delay = 40 }: { text: string, delay?: number }) => {
+  const [displayedText, setDisplayedText] = React.useState('');
+  const [isDone, setIsDone] = React.useState(false);
+
+  React.useEffect(() => {
+    let i = 0;
+    const interval = setInterval(() => {
+      setDisplayedText(text.substring(0, i));
+      i++;
+      if (i > text.length) {
+        clearInterval(interval);
+        setIsDone(true);
+      }
+    }, delay);
+
+    return () => clearInterval(interval);
+  }, [text, delay]);
+
+  return (
+    <div className="mb-12 min-h-[5rem] flex justify-center items-center">
+      <span className="font-black text-2xl sm:text-3xl md:text-4xl text-[#F5A623] uppercase max-w-4xl leading-tight">
+        {displayedText}
+        {!isDone && <span className="inline-block w-3 h-7 md:h-9 ml-2 bg-[#F5A623] align-middle"></span>}
+      </span>
+    </div>
+  );
+};
 
 export function LandingScreen({ onEnter }: { onEnter?: () => void }) {
   return (
@@ -8,11 +38,14 @@ export function LandingScreen({ onEnter }: { onEnter?: () => void }) {
       <DiagonalBanner />
       
       <div className="relative z-10 max-w-3xl mx-auto pt-16 px-6 flex flex-col items-center text-center">
+                {/* Teleprompter Headline */}
+        <TypewriterText text={`${SCHOOL_CONFIG.name}, ${SCHOOL_CONFIG.location} — STUDENT ENTREPRENEURSHIP TRAINING`} />
+        
         {/* Jasmine School - Top Level */}
 <div className="mb-16">
-          <h2 className="text-[#F5A623] font-serif italic text-lg mb-2">Welcome to</h2>
+          <h2 className="text-[#F5A623] font-serif italic text-lg mb-2">In conjunction with</h2>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight flex flex-col gap-1" style={{ fontFamily: 'Syne, sans-serif' }}>
-            <span className="text-white">GRAPHITTI STUDIOS</span>
+            <span className="text-black">GRAPHITTI STUDIOS</span>
             <span className="text-black">CREATIVE ENTREPRENEURSHIP HUB</span>
           </h1>
           <p className="text-gray-500 mt-4 font-medium tracking-wide uppercase text-sm max-w-md mx-auto">
