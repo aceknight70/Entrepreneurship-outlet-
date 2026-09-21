@@ -2,6 +2,7 @@ import React from 'react';
 import { SCHOOL_CONFIG } from '../config';
 import { GraphittiBrand, EsgmcBrand } from '../components/Branding';
 import { DiagonalBanner } from '../components/Layout';
+import { GrowthPathway } from '../components/GrowthPathway';
 
 
 const TypewriterText = ({ text, delay = 40 }: { text: string, delay?: number }) => {
@@ -94,6 +95,9 @@ export function LandingScreen({ onEnter }: { onEnter?: () => void }) {
             </div>
           </div>
         </div>
+
+        {/* Your Child's Growth Pathway */}
+        <GrowthPathway />
       </div>
     </div>
   );

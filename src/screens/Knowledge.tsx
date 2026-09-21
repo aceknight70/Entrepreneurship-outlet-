@@ -84,7 +84,20 @@ export function KnowledgeScreen({ onNextPhase }: { onNextPhase?: () => void }) {
                   <div>
                     <ul className="space-y-3 text-gray-700 font-medium bg-gray-50 p-6 rounded-xl border border-gray-100">
                       <li><strong>Welcome, Shadow Entrepreneur!</strong><br/>Did you know making a bead can change the world?</li>
-                      <li><strong>What is an SDG Entrepreneur?</strong><br/>Ordinary Entrepreneur = Makes Money.<br/>SDG Entrepreneur = Makes Money + Protects the Planet (SDG 12) + Helps People (SDG 8).</li>
+                      <li>
+                        <strong>What is an SDG Entrepreneur?</strong>
+                        <p className="mt-2 text-sm leading-relaxed">
+                          Anyone can start a business to make money. That's an ordinary entrepreneur.
+                          But you're being trained as something more — an SDG Entrepreneur. Your business doesn't just make money. It also protects the planet and helps real people ensures that there is growth in prosperity and peace  .  Every piece you make, every decision about waste, material usage , every price you set — these aren't just business choices. They're chances to build something genuinely good, not just profitable
+                        </p>
+                        <p className="mt-2 text-sm leading-relaxed">
+                          Here's what that actually means to be trained as an SDG Entrepreneur.: you don't just start a business and
+                          hope it does some good along the way. You pick a real United Nations Sustainable
+                          Development Goal — like protecting the planet, quality education, or building decent
+                          work , innovation- industry- infrastructure, — and you build your ENTIRE business around achieving it. 
+                          The goal isn't an extra step you add on later. It's the foundation everything else is built on.
+                        </p>
+                      </li>
                       <li><strong>Introduction to Resin Craft:</strong><br/>What resin is, how it cures from liquid to hard plastic.</li>
                       <li><strong>What can we make?</strong><br/>Beads (our focus), plus jewellery, keychains, bookmarks, decorative art.</li>
                     </ul>
@@ -150,8 +163,8 @@ export function KnowledgeScreen({ onNextPhase }: { onNextPhase?: () => void }) {
               {activeWeek === 2 && activeTab === 'learn' && (
                 <div className="space-y-6">
                   <div className="bg-gray-50 p-6 rounded-xl border border-gray-100 text-gray-700 font-medium space-y-4">
-                    <p>Before you touch resin, you need to understand what it actually is.</p>
-                    <p>Resin starts as a liquid — but not a harmless one. While it's uncured, it can irritate your skin and give off fumes. Once it's mixed and cured, it is completely safe. The product you wear afterward has none of these risks. That's why we prepare properly before we start.</p>
+                    <p>Resin is like magic in liquid form. On its own, it's just a liquid — but mix it with its hardener, and something amazing happens: it transforms, curing into a smooth, glassy, solid piece, in exactly the shape of whatever mould you pour it into.</p>
+                    <p>That transformation is called curing, and it's the reason resin can become jewellery, beads, and art. But like most transformations, it needs care while it's happening. While resin is still liquid and uncured, it can irritate your skin — so this is when your protection matters. Once it's fully cured, none of that applies. The finished piece you wear is completely safe.</p>
                     <p>Ensure you have your protection materials: gloves, a mask, an apron, and a covering mat — resin can be really sticky. Open a window for ventilation.</p>
                   </div>
 
