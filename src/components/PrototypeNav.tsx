@@ -1,6 +1,6 @@
 import React from 'react';
 import { ViewState } from '../types';
-import { Layers, GraduationCap, LayoutDashboard, BookOpen, PenTool, Store, Shield, Users, Package } from 'lucide-react';
+import { Layers, GraduationCap, LayoutDashboard, BookOpen, PenTool, Store, Shield, Users, Package, Image as ImageIcon, Sparkles } from 'lucide-react';
 
 interface PrototypeNavProps {
   currentView: ViewState;
@@ -10,15 +10,17 @@ interface PrototypeNavProps {
 export function PrototypeNav({ currentView, onViewChange }: PrototypeNavProps) {
   const navItems: { id: ViewState; label: string; icon: React.ReactNode }[] = [
     { id: 'landing', label: '1. Landing', icon: <Layers className="w-4 h-4" /> },
-    { id: 'enrolment', label: '2. Enrolment', icon: <PenTool className="w-4 h-4" /> },
-    { id: 'dashboard', label: '3. Dashboard', icon: <LayoutDashboard className="w-4 h-4" /> },
-    { id: 'knowledge', label: '4. Knowledge', icon: <BookOpen className="w-4 h-4" /> },
-    { id: 'preparation', label: '5. Preparation', icon: <BookOpen className="w-4 h-4" /> },
-    { id: 'production', label: '6. Production', icon: <Package className="w-4 h-4" /> },
-    { id: 'market', label: '7. Market', icon: <Store className="w-4 h-4" /> },
-    { id: 'graduation', label: '8. Graduation', icon: <GraduationCap className="w-4 h-4" /> },
-    { id: 'admin', label: '9. Admin View', icon: <Shield className="w-4 h-4" /> },
-    { id: 'parent', label: '10. Parent View', icon: <Users className="w-4 h-4" /> },
+    { id: 'gallery', label: '2. Gallery', icon: <ImageIcon className="w-4 h-4" /> },
+    { id: 'enrolment', label: '3. Enrolment', icon: <PenTool className="w-4 h-4" /> },
+    { id: 'dashboard', label: '4. Dashboard', icon: <LayoutDashboard className="w-4 h-4" /> },
+    { id: 'knowledge', label: '5. Knowledge', icon: <BookOpen className="w-4 h-4" /> },
+    { id: 'preparation', label: '6. Preparation', icon: <BookOpen className="w-4 h-4" /> },
+    { id: 'production', label: '7. Production', icon: <Package className="w-4 h-4" /> },
+    { id: 'market', label: '8. Market', icon: <Store className="w-4 h-4" /> },
+    { id: 'graduation', label: '9. Graduation', icon: <GraduationCap className="w-4 h-4" /> },
+    { id: 'admin', label: '10. Admin View', icon: <Shield className="w-4 h-4" /> },
+    { id: 'parent', label: '11. Parent View', icon: <Users className="w-4 h-4" /> },
+    { id: 'bridge', label: '12. Graphitti Bridge', icon: <Sparkles className="w-4 h-4" /> },
   ];
 
   return (

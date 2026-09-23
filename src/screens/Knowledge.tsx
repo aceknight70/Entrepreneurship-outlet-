@@ -194,6 +194,24 @@ export function KnowledgeScreen({ onNextPhase }: { onNextPhase?: () => void }) {
                     This is Safety #1, Waste #2 — you handle yourself safely first, and you handle the material responsibly second.
                   </div>
 
+                  {/* Institute Trainer Track Certification Protocol Note */}
+                  <div className="bg-amber-50 border-2 border-[#F5A623] p-5 rounded-xl space-y-2">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] font-black uppercase tracking-wider bg-[#0B1F3A] text-[#F5A623] px-2 py-0.5 rounded">
+                        Institute Trainer Track
+                      </span>
+                      <h5 className="font-black text-gray-900 text-xs uppercase tracking-wide">
+                        Mandatory Trainer Safety Protocol (Certification Core)
+                      </h5>
+                    </div>
+                    <p className="text-xs text-gray-700 leading-relaxed font-medium">
+                      Built directly into certified trainer standards: All trainers must enforce the written safety triad prior to and during every practical session: 
+                      (1) <strong>Active Ventilation</strong> — verified cross-breeze and airflow before any resin or hardener container is unsealed; 
+                      (2) <strong>Strict Clean Zone</strong> — zero food or beverages permitted on or near resin work benches; 
+                      (3) <strong>Compliant Disposal</strong> — liquid residue wiped clean and allowed to cure solid before disposal, with cured offcuts systematically collected for waste-to-art upcycling.
+                    </p>
+                  </div>
+
                   <button onClick={() => setActiveTab('do')} className="w-full bg-[#0B1F3A] text-white py-4 rounded-xl font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-[#15325A]">
                     Continue to Homework ➔
                   </button>

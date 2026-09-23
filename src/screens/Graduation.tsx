@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
-import { Award, CheckCircle2 } from 'lucide-react';
+import { Award, CheckCircle2, Sparkles, ArrowRight, FileText } from 'lucide-react';
 import { DiagonalBanner } from '../components/Layout';
 import { PlaceholderImage } from '../components/PlaceholderImage';
 import { SCHOOL_CONFIG } from '../config';
 
-export function GraduationScreen() {
+interface GraduationScreenProps {
+  onOpenBridge?: () => void;
+}
+
+export function GraduationScreen({ onOpenBridge }: GraduationScreenProps) {
   const [activeTab, setActiveTab] = useState<'learn' | 'do' | 'check' | 'sign'>('learn');
+  const [isGraduated, setIsGraduated] = useState(true);
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col pb-24 font-sans">
@@ -25,6 +30,40 @@ export function GraduationScreen() {
             </div>
           </button>
         </div>
+
+        {/* Graphitti Bridge Unlocked Hero Banner (Unlocks immediately after completing Week 11) */}
+        {isGraduated && (
+          <div className="bg-gradient-to-r from-[#0B1F3A] via-[#15325A] to-purple-900 rounded-2xl p-6 text-white shadow-lg border-2 border-[#F5A623] mb-6 relative overflow-hidden animate-fadeIn">
+            <div className="absolute -right-6 -bottom-6 w-32 h-32 bg-[#F5A623]/20 rounded-full blur-2xl pointer-events-none" />
+            <div className="flex items-center gap-2 mb-2">
+              <span className="px-2.5 py-0.5 rounded-full bg-[#F5A623] text-[#0B1F3A] text-xs font-black uppercase tracking-wider flex items-center gap-1">
+                <Sparkles className="w-3.5 h-3.5" />
+                Unlocked Post-Graduation
+              </span>
+              <span className="text-xs text-purple-200 font-medium">Week 11 Milestone</span>
+            </div>
+
+            <h3 className="text-xl sm:text-2xl font-black uppercase tracking-tight text-white mb-2">
+              The Graphitti Bridge is Now Open! 🌉
+            </h3>
+            <p className="text-blue-100 text-xs sm:text-sm leading-relaxed mb-4 max-w-xl">
+              You proved your products on Market Day and earned real revenue. Now write your letter to your parent to request seed startup capital from the <strong>Day Spring Parent Cooperative</strong>.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              {onOpenBridge && (
+                <button
+                  onClick={onOpenBridge}
+                  className="bg-[#F5A623] hover:bg-[#e0961b] text-[#0B1F3A] px-5 py-3 rounded-xl font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-md"
+                >
+                  <FileText className="w-4 h-4" />
+                  <span>Start Step 1: Write Letter to Parent</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              )}
+            </div>
+          </div>
+        )}
 
         <div className="bg-white rounded-xl shadow-sm border-2 border-purple-100 overflow-hidden mb-6">
           <div className="bg-purple-600 text-white p-4 flex items-center gap-4">
@@ -112,9 +151,24 @@ export function GraduationScreen() {
                     </p>
                   </div>
 
-                  <button className="w-full py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all bg-green-100 text-green-700 border-2 border-green-500">
-                    <CheckCircle2 className="w-5 h-5" /> GRADUATION COMPLETE
-                  </button>
+                  <div className="space-y-3">
+                    <button 
+                      onClick={() => setIsGraduated(true)}
+                      className="w-full py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all bg-green-100 text-green-700 border-2 border-green-500"
+                    >
+                      <CheckCircle2 className="w-5 h-5" /> GRADUATION COMPLETE
+                    </button>
+
+                    {onOpenBridge && (
+                      <button
+                        onClick={onOpenBridge}
+                        className="w-full py-4 rounded-xl font-black flex items-center justify-center gap-2 transition-all bg-[#F5A623] hover:bg-[#e0961b] text-[#0B1F3A] uppercase tracking-wider shadow-md"
+                      >
+                        <Sparkles className="w-5 h-5" />
+                        <span>Proceed to Graphitti Bridge (Child's Letter) ➔</span>
+                      </button>
+                    )}
+                  </div>
                 </div>
               )}
             </div>
@@ -124,3 +178,4 @@ export function GraduationScreen() {
     </div>
   );
 }
+

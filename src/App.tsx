@@ -12,6 +12,8 @@ import { GraduationScreen } from './screens/Graduation';
 import { AdminViewScreen } from './screens/AdminView';
 import { ParentViewScreen } from './screens/ParentView';
 import { GalleryScreen } from './screens/Gallery';
+import { GalleryAdminScreen } from './screens/GalleryAdmin';
+import { GraphittiBridgeScreen } from './screens/GraphittiBridge';
 
 export default function App() {
   const [currentView, setCurrentView] = useState<ViewState>('landing');
@@ -19,7 +21,7 @@ export default function App() {
   const renderView = () => {
     switch (currentView) {
       case 'landing': 
-        return <LandingScreen onEnter={() => setCurrentView('enrolment')} />;
+        return <LandingScreen onEnter={() => setCurrentView('gallery')} />;
       case 'enrolment': 
         return <EnrolmentScreen />;
       case 'dashboard': 
@@ -40,11 +42,32 @@ export default function App() {
       case 'market': 
         return <MarketScreen onNextPhase={() => setCurrentView('graduation')} />;
       case 'graduation': 
-        return <GraduationScreen />;
+        return <GraduationScreen onOpenBridge={() => setCurrentView('bridge')} />;
+      case 'bridge':
+        return <GraphittiBridgeScreen onBack={() => setCurrentView('graduation')} />;
       case 'gallery':
-        return <GalleryScreen onBack={() => setCurrentView('dashboard')} />;
+        return (
+          <GalleryScreen 
+            onBack={() => setCurrentView('landing')} 
+            onProceedToEnrolment={() => setCurrentView('enrolment')}
+            onOpenAdmin={() => setCurrentView('gallery-admin')}
+          />
+        );
+      case 'gallery-admin':
+        return (
+          <GalleryAdminScreen 
+            onBack={() => setCurrentView('admin')} 
+            onViewPublicGallery={() => setCurrentView('gallery')}
+          />
+        );
       case 'admin': 
-        return <AdminViewScreen onBack={() => setCurrentView('landing')} />;
+        return (
+          <AdminViewScreen 
+            onBack={() => setCurrentView('landing')} 
+            onOpenGalleryAdmin={() => setCurrentView('gallery-admin')}
+            onOpenBridge={() => setCurrentView('bridge')}
+          />
+        );
       case 'parent': 
         return <ParentViewScreen onBack={() => setCurrentView('landing')} />;
       default: 

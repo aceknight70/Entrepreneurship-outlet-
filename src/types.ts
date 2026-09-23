@@ -3,10 +3,12 @@ export type ViewState =
   | 'enrolment'
   | 'dashboard'
   | 'gallery'
+  | 'gallery-admin'
   | 'knowledge'
   | 'preparation'
   | 'production'
   | 'market'
   | 'graduation'
   | 'admin'
-  | 'parent';
+  | 'parent'
+  | 'bridge';
