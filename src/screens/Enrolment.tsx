@@ -45,6 +45,7 @@ export function EnrolmentScreen() {
                 <li className="flex gap-2"><span className="text-[#F5A623]">•</span> I will respect the materials and safety protocols.</li>
                 <li className="flex gap-2"><span className="text-[#F5A623]">•</span> I will calculate my costs honestly.</li>
                 <li className="flex gap-2"><span className="text-[#F5A623]">•</span> I will present my work to the market.</li>
+                <li className="flex gap-2"><span className="text-[#F5A623]">•</span> I will reflect and draft a concrete plan from it.</li>
               </ul>
             </div>
 
@@ -65,7 +66,7 @@ export function EnrolmentScreen() {
                 <div className="flex items-center justify-between p-3 bg-white rounded-lg border border-gray-200">
                   <div>
                     <p className="font-bold text-gray-900">Entrepreneurship Training Fee</p>
-                    <p className="text-gray-500 text-[11px]">11-Week SDG business mentorship, practical craft development, and Market Day guidance</p>
+                    <p className="text-gray-500 text-[11px]">11-Week SDG business mentorship, practical craft development, Market Day guidance, and after-market reflection.</p>
                   </div>
                   <span className="font-black text-[#0B1F3A] text-xs bg-gray-100 px-2.5 py-1 rounded">Tuition Split</span>
                 </div>
@@ -79,7 +80,7 @@ export function EnrolmentScreen() {
                   <span className="font-black text-[#0B1F3A] text-xs bg-gray-100 px-2.5 py-1 rounded">Craft Asset Kit</span>
                 </div>
 
-                {/* 3. Safety & Materials Handling Fee (Explicit, positive framing) */}
+                {/* 3. Safety, Materials & Documentation Fee */}
                 <div className="p-3.5 bg-amber-50/90 rounded-xl border-2 border-[#F5A623] shadow-xs space-y-1.5">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
@@ -87,15 +88,15 @@ export function EnrolmentScreen() {
                         <ShieldCheck className="w-4 h-4" />
                       </div>
                       <h4 className="font-black text-gray-900 text-sm">
-                        Safety & Materials Handling — ₦500/student
+                        Safety, Materials & Documentation — ₦1,000/student
                       </h4>
                     </div>
                     <span className="font-black text-sm text-[#0B1F3A] bg-[#F5A623] px-2.5 py-0.5 rounded shadow-2xs">
-                      ₦500
+                      ₦1,000
                     </span>
                   </div>
                   <p className="text-gray-700 text-xs leading-relaxed">
-                    This covers <strong>group safety coverage for the programme</strong>: certified nitrile gloves, organic vapour filtration masks, splash aprons, silicone work mats, workshop cross-ventilation oversight, and compliant resin curing and waste disposal throughout all 11 weeks.
+                    This covers group safety coverage for the programme — certified nitrile gloves, organic vapour filtration masks, splash aprons, silicone work mats, workshop cross-ventilation oversight, and compliant resin curing and waste disposal throughout all 11 weeks — and ongoing documentation of your child's development throughout the programme, building a real record that supports future Graphitti Bridge funding applications.
                   </p>
                 </div>
               </div>

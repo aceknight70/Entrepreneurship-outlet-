@@ -207,7 +207,7 @@ export function AdminViewScreen({ onBack, onOpenGalleryAdmin, onOpenBridge }: Ad
                             Requested Startup Capital:
                           </span>
                           <span className="text-lg font-black text-purple-950">
-                            ₦{Number(req.requested_amount || 15000).toLocaleString()}
+                            ₦{Number(req.requested_amount || 70000).toLocaleString()}
                           </span>
                         </div>
                         <div className="text-right sm:text-left">
@@ -366,14 +366,14 @@ export function AdminViewScreen({ onBack, onOpenGalleryAdmin, onOpenBridge }: Ad
               <div className="flex items-center justify-between">
                 <span className="text-amber-800 font-black uppercase text-[10px] block">Dedicated Coverage</span>
                 <span className="bg-[#F5A623] text-[#0B1F3A] font-black px-1.5 py-0.5 rounded text-[11px]">
-                  ₦500 / std
+                  ₦1,000 / std
                 </span>
               </div>
               <p className="font-black text-gray-900 text-sm mt-0.5">
-                Safety & Materials Handling
+                Safety, Materials & Documentation
               </p>
               <p className="text-gray-700 text-[11px] mt-1 leading-relaxed">
-                Group safety coverage: certified PPE (nitrile gloves, organic vapour masks), ventilation oversight, and compliant disposal. (Total Pool: ₦21,000 for 42 students).
+                Group safety coverage: certified PPE (nitrile gloves, organic vapour masks), ventilation oversight, compliant disposal, and student development documentation. (Total Pool: ₦42,000 for 42 students).
               </p>
             </div>
           </div>

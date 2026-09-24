@@ -61,12 +61,12 @@ export const CURRENT_STUDENT_PROFILE: StudentProfileData = {
   studentCode: `S-${SCHOOL_CONFIG.initials}-CHI-014`,
   parentCode: `P-${SCHOOL_CONFIG.initials}-CHI-014`,
   salesRecord: [
-    { id: 'sale-1', name: 'Swirl Resin Beads (Strings of 10)', quantity: 2, unitPrice: 250, total: 500 },
-    { id: 'sale-2', name: 'Gold Leaf Teardrop Earrings', quantity: 2, unitPrice: 350, total: 700 },
-    { id: 'sale-3', name: 'Polished Mica Pendant', quantity: 1, unitPrice: 500, total: 500 },
-    { id: 'sale-4', name: 'Hexagonal Custom Keyholders', quantity: 2, unitPrice: 300, total: 600 },
+    { id: 'sale-1', name: 'Swirl Resin Beads (Strings of 10)', quantity: 14, unitPrice: 250, total: 3500 },
+    { id: 'sale-2', name: 'Gold Leaf Teardrop Earrings', quantity: 12, unitPrice: 350, total: 4200 },
+    { id: 'sale-3', name: 'Polished Mica Pendant', quantity: 6, unitPrice: 500, total: 3000 },
+    { id: 'sale-4', name: 'Hexagonal Custom Keyholders', quantity: 11, unitPrice: 300, total: 3300 },
   ],
-  totalSales: 2300,
+  totalSales: 14000,
   productionLogSummary: {
     batchNumber: 'Batch #3 (Week 7-8)',
     resinUsedMl: 45,
@@ -83,7 +83,7 @@ export const CURRENT_STUDENT_PROFILE: StudentProfileData = {
   }
 };
 
-const STORAGE_KEY = 'graphitti_bridge_requests_v1';
+const STORAGE_KEY = 'graphitti_bridge_requests_v2';
 
 function getLocalRequests(): BridgeRequest[] {
   try {
@@ -258,8 +258,8 @@ export const bridgeService = {
     } else if (!updated) {
       updated = {
         id: requestId,
-        requested_amount: 15000,
-        plan_text: 'Expand resin bead production for retail packaging',
+        requested_amount: 70000,
+        plan_text: 'buy resin, hardener, and multiple silicone moulds in bulk, so I can move from making a few pieces at a time to running proper production batches — enough for wholesale orders, the Christmas exhibition, and steady stock for the Day Spring Marketplace going forward',
         child_letter_signature: CURRENT_STUDENT_PROFILE.studentCode,
         parent_acknowledged_at: now,
         parent_letter_signature: null,
@@ -419,8 +419,8 @@ export const bridgeService = {
       id: 'demo-bridge-req-1',
       student_id: CURRENT_STUDENT_PROFILE.id,
       parent_id: null,
-      requested_amount: 15000,
-      plan_text: 'purchase a bulk 1kg epoxy pack and a 6-cavity geometric silicone mould so I can produce 50 wholesale earring and pendant sets for the upcoming Christmas exhibition and wholesale school supply orders',
+      requested_amount: 70000,
+      plan_text: 'buy resin, hardener, and multiple silicone moulds in bulk, so I can move from making a few pieces at a time to running proper production batches — enough for wholesale orders, the Christmas exhibition, and steady stock for the Day Spring Marketplace going forward',
       child_letter_signature: CURRENT_STUDENT_PROFILE.studentCode,
       parent_acknowledged_at: null,
       parent_letter_signature: null,

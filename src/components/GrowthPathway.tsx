@@ -28,7 +28,7 @@ export function GrowthPathway() {
       stageTag: 'Junior Tier',
       audience: 'Primary & JSS Students',
       title: 'Responsible Use Champion',
-      description: 'Younger students build the foundation: understanding responsible, sustainable production before moving to full production themselves.',
+      description: 'Younger students build the foundation: understanding responsible, sustainable production, innovation, and design skills before moving to full production themselves. Though they do produce real, sellable items by the end of this stage, the focus here is on shaping their mindset, not the item itself.',
       icon: Leaf,
       iconBg: 'bg-emerald-50 text-emerald-700 border-emerald-200',
       badgeColor: 'bg-emerald-100 text-emerald-800',
@@ -39,7 +39,7 @@ export function GrowthPathway() {
       stageTag: 'Senior Tier',
       audience: 'SS Students • Post-Production',
       title: 'Producer & Asset Owner',
-      description: 'Students who complete production hold real, sellable items and real assets. This stage opens eligibility for SDG Entrepreneur Mentorship Grants.',
+      description: 'Students who complete production hold real, sellable items, real assets, a real business plan, and a real ask for growth and expansion. This stage opens eligibility for SDG Entrepreneur Mentorship Grants.',
       icon: PackageCheck,
       iconBg: 'bg-amber-50 text-amber-700 border-amber-200',
       badgeColor: 'bg-amber-100 text-amber-800',
@@ -74,7 +74,7 @@ export function GrowthPathway() {
             Your Child's Growth Pathway
           </h2>
           <p className="text-gray-600 mt-2 text-sm sm:text-base leading-relaxed">
-            We don't promise overnight entrepreneurs. We provide an authentic starting identity on Day 1, followed by a grounded, step-by-step pathway from foundation knowledge to real asset ownership and institutional backing.
+            We don't promise overnight entrepreneurs. To build a grounded, young entrepreneurial mindset, we provide an authentic starting identity on Day 1, followed by a grounded, step-by-step pathway from foundation knowledge to real asset ownership and institutional backing.
           </p>
         </div>
 

@@ -42,9 +42,9 @@ export function GraphittiBridgeScreen({ onBack, onNavigateParentView, onNavigate
 
   // Step 1: Child inputs
   const [planText, setPlanText] = useState(
-    'purchase a bulk 1kg epoxy pack and a 6-cavity geometric silicone mould so I can produce 50 wholesale earring and pendant sets for the upcoming Christmas exhibition and school store orders'
+    'buy resin, hardener, and multiple silicone moulds in bulk, so I can move from making a few pieces at a time to running proper production batches — enough for wholesale orders, the Christmas exhibition, and steady stock for the Day Spring Marketplace going forward'
   );
-  const [requestedAmount, setRequestedAmount] = useState('15000');
+  const [requestedAmount, setRequestedAmount] = useState('70000');
   const [studentSignature, setStudentSignature] = useState('');
   const [childSubmitted, setChildSubmitted] = useState(false);
   const [currentRequest, setCurrentRequest] = useState<BridgeRequest | null>(null);
@@ -421,7 +421,7 @@ export function GraphittiBridgeScreen({ onBack, onNavigateParentView, onNavigate
                       onChange={(e) => setPlanText(e.target.value)}
                       disabled={childSubmitted}
                       rows={3}
-                      placeholder="e.g. purchase a bulk 1kg epoxy pack and a 6-cavity geometric silicone mould so I can produce 50 wholesale earring sets for the upcoming Christmas exhibition..."
+                      placeholder="e.g. buy resin, hardener, and multiple silicone moulds in bulk, so I can move from making a few pieces at a time to running proper production batches..."
                       className="w-full text-sm p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0B1F3A] bg-gray-50/50 disabled:bg-gray-100 disabled:cursor-not-allowed"
                     />
                   </div>
@@ -438,7 +438,7 @@ export function GraphittiBridgeScreen({ onBack, onNavigateParentView, onNavigate
                         value={requestedAmount}
                         onChange={(e) => setRequestedAmount(e.target.value)}
                         disabled={childSubmitted}
-                        placeholder="15000"
+                        placeholder="70000"
                         className="w-full text-sm pl-8 pr-3 py-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0B1F3A] font-black text-gray-900 disabled:bg-gray-100"
                       />
                     </div>
@@ -448,7 +448,7 @@ export function GraphittiBridgeScreen({ onBack, onNavigateParentView, onNavigate
                 <p>
                   <strong>Why I think this is worth it:</strong>
                   <br />
-                  I've already shown I can make something people actually want to buy, and I know exactly what it costs to make and what I can sell it for. I'm not guessing — I have real numbers from my own business plan to back this up.
+                  I've already sold real pieces — beads, earrings, pendants, and keyholders worth ₦13,000–15,000 — and I know exactly what each one costs to make and sell for. This isn't a guess. With this funding, I can scale from small batches to real, ongoing production.
                 </p>
 
                 <p>
@@ -506,7 +506,7 @@ export function GraphittiBridgeScreen({ onBack, onNavigateParentView, onNavigate
                       <p className="font-bold text-xs text-gray-900 group-hover:text-blue-600">
                         🛍️ Market Day Sales Record
                       </p>
-                      <p className="text-[11px] text-gray-500 mt-0.5">4 Products • ₦2,300 Revenue</p>
+                      <p className="text-[11px] text-gray-500 mt-0.5">4 Products • ₦14,000 Revenue</p>
                     </div>
                     <ExternalLink className="w-3.5 h-3.5 text-gray-400 group-hover:text-blue-600" />
                   </button>

@@ -241,20 +241,25 @@ export function ParentViewScreen({ onBack }: { onBack: () => void }) {
                 {/* Student's Stated Plan & Amount */}
                 <div className="bg-white p-4 rounded-xl border border-blue-200 font-sans not-italic text-xs space-y-2">
                   <p>
-                    <strong className="text-[#0B1F3A] uppercase tracking-wider block text-[11px]">
+                    <strong className="text-[#0B1F3A] uppercase tracking-wider block text-[11px] mb-1">
                       What I want to do next:
                     </strong>
-                    I want to {bridgeRequest?.plan_text || profile.refinedBusinessPlanSummary.monthlyProductionUnits + ' units of custom earrings'}. To do this, I need{' '}
-                    <strong className="text-[#0B1F3A] font-black text-sm bg-amber-100 px-1.5 py-0.5 rounded">
-                      ₦{(bridgeRequest?.requested_amount || 15000).toLocaleString()}
-                    </strong>.
+                    {bridgeRequest?.plan_text ? (
+                      bridgeRequest.plan_text.startsWith('I want to') ? (
+                        <span className="text-gray-800 leading-relaxed">{bridgeRequest.plan_text}. To do this, I need <strong className="text-[#0B1F3A] font-black text-sm bg-amber-100 px-1.5 py-0.5 rounded">₦{(bridgeRequest?.requested_amount || 70000).toLocaleString()}</strong>.</span>
+                      ) : (
+                        <span className="text-gray-800 leading-relaxed">I want to {bridgeRequest.plan_text}. To do this, I need <strong className="text-[#0B1F3A] font-black text-sm bg-amber-100 px-1.5 py-0.5 rounded">₦{(bridgeRequest?.requested_amount || 70000).toLocaleString()}</strong>.</span>
+                      )
+                    ) : (
+                      <span className="text-gray-800 leading-relaxed">I want to buy resin, hardener, and multiple silicone moulds in bulk, so I can move from making a few pieces at a time to running proper production batches — enough for wholesale orders, the Christmas exhibition, and steady stock for the Day Spring Marketplace going forward. To do this, I need <strong className="text-[#0B1F3A] font-black text-sm bg-amber-100 px-1.5 py-0.5 rounded">₦{(bridgeRequest?.requested_amount || 70000).toLocaleString()}</strong>.</span>
+                    )}
                   </p>
                 </div>
 
                 <p>
                   <strong>Why I think this is worth it:</strong>
                   <br />
-                  I've already shown I can make something people actually want to buy, and I know exactly what it costs to make and what I can sell it for. I'm not guessing — I have real numbers from my own business plan to back this up.
+                  I've already sold real pieces — beads, earrings, pendants, and keyholders worth ₦13,000–15,000 — and I know exactly what each one costs to make and sell for. This isn't a guess. With this funding, I can scale from small batches to real, ongoing production.
                 </p>
 
                 <p>
@@ -445,11 +450,11 @@ export function ParentViewScreen({ onBack }: { onBack: () => void }) {
                     <p>
                       Based on this record, I am requesting{' '}
                       <strong className="text-purple-900 bg-purple-100 px-2 py-0.5 rounded font-sans">
-                        ₦{(bridgeRequest?.requested_amount || 15000).toLocaleString()}
+                        ₦{(bridgeRequest?.requested_amount || 70000).toLocaleString()}
                       </strong>{' '}
                       in startup capital on my child's behalf, to be used for{' '}
                       <strong className="text-gray-900 font-sans bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
-                        {bridgeRequest?.plan_text || 'expanding resin jewellery production'}
+                        {bridgeRequest?.plan_text || 'bulk resin, hardener, and silicone moulds for wholesale production'}
                       </strong>
                       . I understand I am the responsible party for this request.
                     </p>
@@ -574,7 +579,7 @@ export function ParentViewScreen({ onBack }: { onBack: () => void }) {
               </div>
               <div className="flex-1">
                 <h3 className="font-bold text-gray-900">Phase 5: Market Day & Graduation</h3>
-                <p className="text-sm text-gray-500">Completed 100% • ₦2,300 Revenue</p>
+                <p className="text-sm text-gray-500">Completed 100% • ₦14,000 Revenue</p>
               </div>
             </div>
           </div>
@@ -593,7 +598,7 @@ export function ParentViewScreen({ onBack }: { onBack: () => void }) {
             <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-200 text-xs">
               <div>
                 <p className="font-bold text-gray-900">Entrepreneurship Training Fee</p>
-                <p className="text-gray-500">11-Week SDG business mentorship and curriculum</p>
+                <p className="text-gray-500">11-Week SDG business mentorship, practical craft development, Market Day guidance, and after-market reflection.</p>
               </div>
               <span className="font-bold text-gray-700">Tuition Split</span>
             </div>
@@ -606,21 +611,21 @@ export function ParentViewScreen({ onBack }: { onBack: () => void }) {
               <span className="font-bold text-gray-700">Craft Asset Kit</span>
             </div>
 
-            {/* Explicit Safety Fee Line */}
+            {/* Combined Safety, Materials & Documentation Fee Line */}
             <div className="p-4 bg-amber-50 rounded-xl border-2 border-[#F5A623] text-xs space-y-1.5">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <ShieldCheck className="w-4 h-4 text-[#F5A623]" />
                   <span className="font-black text-gray-900 text-sm">
-                    Safety & Materials Handling — ₦500/student
+                    Safety, Materials & Documentation — ₦1,000/student
                   </span>
                 </div>
                 <span className="bg-[#F5A623] text-[#0B1F3A] font-black px-2.5 py-0.5 rounded text-xs">
-                  ₦500
+                  ₦1,000
                 </span>
               </div>
               <p className="text-gray-700 leading-relaxed">
-                Covers <strong>group safety coverage for the programme</strong>: certified nitrile gloves, organic vapour filtration masks, splash aprons, silicone work mats, workshop cross-ventilation oversight, and compliant resin curing and waste disposal throughout all 11 weeks.
+                This covers group safety coverage for the programme — certified nitrile gloves, organic vapour filtration masks, splash aprons, silicone work mats, workshop cross-ventilation oversight, and compliant resin curing and waste disposal throughout all 11 weeks — and ongoing documentation of your child's development throughout the programme, building a real record that supports future Graphitti Bridge funding applications.
               </p>
             </div>
           </div>
@@ -703,11 +708,11 @@ export function ParentViewScreen({ onBack }: { onBack: () => void }) {
               )}
               {showEvidence === 'sales' && (
                 <div className="space-y-1">
-                  <p>Swirl Resin Beads: ₦500</p>
-                  <p>Gold Leaf Earrings: ₦700</p>
-                  <p>Polished Mica Pendant: ₦500</p>
-                  <p>Hexagonal Keyholders: ₦600</p>
-                  <p className="font-bold text-[#0B1F3A] pt-1 border-t">Total: ₦2,300</p>
+                  <p>Swirl Resin Beads (14x): ₦3,500</p>
+                  <p>Gold Leaf Earrings (12x): ₦4,200</p>
+                  <p>Polished Mica Pendant (6x): ₦3,000</p>
+                  <p>Hexagonal Keyholders (11x): ₦3,300</p>
+                  <p className="font-bold text-[#0B1F3A] pt-1 border-t">Total: ₦14,000</p>
                 </div>
               )}
             </div>
